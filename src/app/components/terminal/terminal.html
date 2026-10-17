@@ -1,0 +1,27 @@
+<div class="terminal-container">
+  <div class="terminal-header">
+    <div class="buttons">
+      <span class="close"></span>
+      <span class="minimize"></span>
+      <span class="maximize"></span>
+    </div>
+    <div class="title">ghizlane@portfolio:~</div>
+  </div>
+  <div class="terminal-body" #terminalBody>
+    <div *ngFor="let line of lines" [ngClass]="{'command-line': line.isCommand, 'error-line': line.isError}">
+        <pre class="terminal-text">{{ line.text }}</pre>
+    </div>
+    <div class="input-line">
+      <span class="prompt">{{ currentPath }}</span>
+      <input
+        type="text"
+        [(ngModel)]="command"
+        (keyup.enter)="handleCommand()"
+        #commandInput
+        autocomplete="off"
+        spellcheck="false"
+        autofocus
+      >
+    </div>
+  </div>
+</div>

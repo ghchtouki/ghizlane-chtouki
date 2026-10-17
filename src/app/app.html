@@ -1,0 +1,167 @@
+<div class="site-container">
+  <nav class="navbar">
+    <div class="logo">Ghizlane <span class="highlight">CHTOUKI</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">{{ t().nav.about }}</a></li>
+      <li><a href="#skills">{{ t().nav.skills }}</a></li>
+      <li><a href="#experience">{{ t().nav.experience }}</a></li>
+      <li><a href="#projects">{{ t().nav.projects }}</a></li>
+      <li><a href="#education">{{ t().nav.education }}</a></li>
+      <li><a href="#certifications">{{ t().nav.certifications }}</a></li>
+      <li><a href="#contact">{{ t().nav.contact }}</a></li>
+    </ul>
+    <div class="nav-controls">
+      <div class="lang-switch" role="group" aria-label="Language">
+        @for (l of languages; track l.code) {
+          <button type="button" [class.active]="lang() === l.code" [attr.aria-pressed]="lang() === l.code" (click)="setLang(l.code)">{{ l.label }}</button>
+        }
+      </div>
+      <button type="button" class="theme-toggle" (click)="toggleTheme()"
+        [attr.aria-label]="theme() === 'dark' ? t().themeLight : t().themeDark"
+        [title]="theme() === 'dark' ? t().themeLight : t().themeDark">
+        {{ theme() === 'dark' ? '☀' : '☾' }}
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="about" class="hero-section">
+      <div class="hero-content">
+        <h1>{{ t().hero.titleLine1 }} <br><span class="highlight">{{ t().hero.titleHighlight }}</span></h1>
+        <p>{{ t().hero.intro }}</p>
+        <div class="cta-buttons">
+          <a href="#projects" class="btn primary">{{ t().hero.viewProjects }}</a>
+          <a href="https://www.linkedin.com/search/results/people/?keywords=Ghizlane%20Chtouki" target="_blank" class="btn secondary">{{ t().hero.linkedin }}</a>
+        </div>
+      </div>
+      <div class="hero-graphics">
+         <div class="data-node node-1"></div>
+         <div class="data-node node-2"></div>
+         <div class="data-node node-3"></div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+      <h2>{{ t().skills.heading.before }} <span class="highlight">{{ t().skills.heading.highlight }}</span></h2>
+      <div class="skills-grid">
+        @for (card of t().skills.cards; track $index) {
+          <div class="skill-card">
+            <h3>{{ card.title }}</h3>
+            <ul>
+              @for (item of card.items; track $index) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section id="experience" class="experience-section">
+      <h2>{{ t().experience.heading.before }} <span class="highlight">{{ t().experience.heading.highlight }}</span></h2>
+      <div class="timeline">
+        @for (job of t().experience.jobs; track $index) {
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>{{ job.title }}</h3>
+              <span class="date">{{ job.date }}</span>
+              @if (job.bullets) {
+                <ul>
+                  @for (b of job.bullets; track $index) {
+                    <li><strong>{{ b.label }}</strong> {{ b.text }}</li>
+                  }
+                </ul>
+              } @else {
+                <p>{{ job.text }}</p>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section id="projects" class="skills-section">
+      <h2>{{ t().projects.heading.before }} <span class="highlight">{{ t().projects.heading.highlight }}</span></h2>
+      <div class="skills-grid">
+        @for (p of t().projects.items; track $index) {
+          <div class="skill-card">
+            <h3>{{ p.title }}</h3>
+            <p class="card-text">{{ p.desc }}</p>
+            <div class="tags">
+              @for (tool of p.tools; track tool) {
+                <span>{{ tool }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section id="education" class="experience-section">
+      <h2>{{ t().education.heading.before }} <span class="highlight">{{ t().education.heading.highlight }}</span></h2>
+      <div class="timeline">
+        @for (e of t().education.items; track $index) {
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>{{ e.degree }}</h3>
+              <span class="date">{{ e.date }}</span>
+              <p>{{ e.school }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section id="certifications" class="skills-section">
+      <h2>{{ t().certifications.heading.before }} <span class="highlight">{{ t().certifications.heading.highlight }}</span></h2>
+      <div class="skills-grid">
+        @for (c of t().certifications.items; track $index) {
+          <div class="skill-card">
+            <h3>{{ c.name }}</h3>
+            @if (c.issuer) {
+              <p class="card-text">{{ c.issuer }}</p>
+            }
+          </div>
+        }
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2>{{ t().contact.heading.before }} <span class="highlight">{{ t().contact.heading.highlight }}</span></h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="info-item">
+            <span class="icon">📍</span>
+            <p>{{ t().contact.location }}</p>
+          </div>
+          <div class="info-item">
+            <span class="icon">✉️</span>
+            <p>ghizlanechtouki2025&#64;gmail.com</p>
+          </div>
+          <div class="info-item">
+            <span class="icon">📞</span>
+            <p>+212 654668209</p>
+          </div>
+          <div class="info-item">
+            <span class="icon">💼</span>
+            <a href="https://www.linkedin.com/search/results/people/?keywords=Ghizlane%20Chtouki" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+        <div class="contact-form">
+           <form (submit)="false">
+              <input type="text" [placeholder]="t().contact.name" class="form-input">
+              <input type="email" [placeholder]="t().contact.email" class="form-input">
+              <textarea [placeholder]="t().contact.message" class="form-input" rows="5"></textarea>
+              <button type="button" class="btn primary">{{ t().contact.send }}</button>
+           </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>{{ t().footer }}</p>
+  </footer>
+</div>

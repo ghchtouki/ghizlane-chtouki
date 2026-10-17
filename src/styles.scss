@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;800&display=swap');
+
+:root {
+  --bg-color: #050505;
+  --bg-secondary: #0a0f16;
+  --text-main: #e2e8f0;
+  --text-color: #66fcf1;
+  --text-dim: #45a29e;
+  --prompt-color: #c5c6c7;
+  --error-color: #ff5722;
+  --accent-color: #f39c12;
+  --heading-color: #ffffff;
+  --card-bg: rgba(11, 12, 16, 0.8);
+  --nav-bg: rgba(5, 5, 5, 0.8);
+  --footer-bg: #030303;
+  --font-terminal: 'Fira Code', monospace;
+  --font-main: 'Inter', sans-serif;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg-color: #f7f9fb;
+  --bg-secondary: #eaf1f4;
+  --text-main: #273444;
+  --text-color: #0b7a75;
+  --text-dim: #2f7f7b;
+  --prompt-color: #4a5868;
+  --accent-color: #b35c00;
+  --heading-color: #0f1923;
+  --card-bg: #ffffff;
+  --nav-bg: rgba(247, 249, 251, 0.85);
+  --footer-bg: #e3eaee;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  color: var(--heading-color);
+}
+
+.highlight {
+  color: var(--text-color);
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-shadow: 0 0 8px rgba(102, 252, 241, 0.5);
+}
+
+::selection {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-dim);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color);
+}
